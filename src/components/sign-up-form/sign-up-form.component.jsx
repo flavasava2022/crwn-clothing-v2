@@ -4,6 +4,8 @@ import {
   createUserDocumentFromAuth,
 } from "../../utils/firebase/firebase.utils";
 import FormInput from "../form-input/form-input.component";
+import "./sign-up-form.styles.scss";
+import Button from "../button/button.component";
 
 const SignUpForm = () => {
   const [formFields, setFormFields] = useState({
@@ -43,8 +45,9 @@ const SignUpForm = () => {
   };
   console.log(formFields);
   return (
-    <div>
-      <h1>sign up with your email and password</h1>
+    <div className="sign-up-container">
+      <h2>Do not have an account ?</h2>
+      <span>Sign up with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
           label={"display Name"}
@@ -81,7 +84,7 @@ const SignUpForm = () => {
           onChange={handleChange}
           value={confirmPassword}
         />
-        <button type="submit">Sign Up</button>
+        <Button type="submit">Sign Up</Button>
       </form>
     </div>
   );
