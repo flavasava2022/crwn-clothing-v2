@@ -6,6 +6,8 @@ import App from "./App";
 import { UserProvider } from "./contexts/user.context";
 
 import "./index.scss";
+import { ProductsProvider } from "./contexts/products.context";
+import { CartDropdownProvider } from "./contexts/cart-dropdown.context";
 
 const rootElement = document.getElementById("root");
 
@@ -13,7 +15,13 @@ render(
   <React.StrictMode>
     <BrowserRouter>
       <UserProvider>
+
+        <ProductsProvider>
+                  <CartDropdownProvider>
         <App />
+        </CartDropdownProvider>
+        </ProductsProvider>
+
       </UserProvider>
     </BrowserRouter>
   </React.StrictMode>,

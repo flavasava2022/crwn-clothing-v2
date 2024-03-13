@@ -7,14 +7,13 @@ import { ReactComponent as CrwnLogo } from "../../assets/crown.svg";
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 
 import "./navigation.styles.scss";
+import CartIcon from "../../components/cart-icon/cart-icon.component";
+import CartDropdown from "../../components/cart-dropdown/cart-drop-down.component";
+import { cartDropdownContext } from "../../contexts/cart-dropdown.context";
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
-
-  // const signOutHandler = async () => {
-  //   await signOutUser();
-  //   setCurrentUser(null);
-  // };
+  const { dropDownOpen } = useContext(cartDropdownContext);
 
   return (
     <Fragment>
@@ -37,7 +36,9 @@ const Navigation = () => {
               SIGN IN
             </Link>
           )}
+          <CartIcon />
         </div>
+        {dropDownOpen && <CartDropdown />}
       </div>
       <Outlet />
     </Fragment>
