@@ -1,17 +1,24 @@
-import { createContext, useState } from "react";
-import PRODUCTS from "../shop-data.json";
+import { createContext, useState, useEffect } from "react";
 
-export const productsContext = createContext({
+import { addCollectionAndDocuments } from "../utils/firebase/firebase.utils";
+
+import SHOP_DATA from "../shop-data.js";
+
+export const ProductsContext = createContext({
   products: [],
 });
 
 export const ProductsProvider = ({ children }) => {
-  const [products, setProducts] = useState(PRODUCTS);
-  const value = { products };
+  const [products, setProducts] = useState([]);
 
+  // useEffect(() => {
+  //   addCollectionAndDocuments('collections', SHOP_DATA);
+  // }, []);
+
+  const value = { products };
   return (
-    <productsContext.Provider value={value}>
+    <ProductsContext.Provider value={value}>
       {children}
-    </productsContext.Provider>
+    </ProductsContext.Provider>
   );
 };

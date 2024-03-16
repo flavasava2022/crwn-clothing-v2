@@ -1,20 +1,18 @@
 import { useContext } from "react";
 
-import { productsContext } from "../../contexts/products.context";
 import ProductCard from "../../components/product-card/product-card.component";
+
+import { ProductsContext } from "../../contexts/products.context";
+
 import "./shop.styles.scss";
+
 const Shop = () => {
-  const { products } = useContext(productsContext);
+  const { products } = useContext(ProductsContext);
+
   return (
     <div className="products-container">
-      {products.map(({ id, name, imageUrl, price }) => (
-        <ProductCard
-          id={id}
-          name={name}
-          imageUrl={imageUrl}
-          price={price}
-          key={id}
-        />
+      {products.map((product) => (
+        <ProductCard key={product.id} product={product} />
       ))}
     </div>
   );
