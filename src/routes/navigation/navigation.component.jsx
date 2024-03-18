@@ -13,8 +13,8 @@ import { signOutUser } from "../../utils/firebase/firebase.utils";
 
 import {
   NavigationContainer,
-  Navlinks,
-  Navlink,
+  NavLinks,
+  NavLink,
   LogoContainer,
 } from "./navigation.styles";
 
@@ -28,18 +28,18 @@ const Navigation = () => {
         <LogoContainer to="/">
           <CrwnLogo className="logo" />
         </LogoContainer>
-        <Navlinks>
-          <Navlink to="/shop">SHOP</Navlink>
+        <NavLinks>
+          <NavLink to="/shop">SHOP</NavLink>
 
           {currentUser ? (
-            <Navlink as="span" onClick={signOutUser}>
+            <NavLink as="span" onClick={signOutUser}>
               SIGN OUT
-            </Navlink>
+            </NavLink>
           ) : (
-            <Navlink to="/auth">SIGN IN</Navlink>
+            <NavLink to="/auth">SIGN IN</NavLink>
           )}
           <CartIcon />
-        </Navlinks>
+        </NavLinks>
         {isCartOpen && <CartDropdown />}
       </NavigationContainer>
       <Outlet />
